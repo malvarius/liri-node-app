@@ -7,7 +7,10 @@ const axios = require('axios');
 
 
 // if statement for bands in town info and sorting of search here
-var artist = 'blink-182'
+
+if (process.argv[2]==='concert-this'){
+var artist = process.argv.slice(3).join(" ")
+console.log(artist);
 
 axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=codingbootcamp")
 .then(function(response){
@@ -17,3 +20,4 @@ axios.get("https://rest.bandsintown.com/artists/" + artist + "/events?app_id=cod
  .catch(function(err){
      console.log(err);
  })
+}
