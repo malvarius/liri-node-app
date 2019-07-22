@@ -1,6 +1,6 @@
 require("dotenv").config();
 var keys = require("./keys.js");
-var artistMov = process.argv.slice(3).join("+")
+var artistMov = process.argv.slice(3).join("+") 
 const axios = require('axios');
 
 
@@ -21,9 +21,11 @@ for(var i=0;i<5;i++){
      console.log(err);
  })
 }
-
-// api request to OMDB 
-if (process.argv[2]==='movie-this'){
+// api request to OMDB if argument is movie-this
+else if (process.argv[2]==='movie-this'){
+    if(!process.argv[3]){
+        artistMov='Mr.+Nobody'
+    }
 axios.get('http://www.omdbapi.com/?i=tt3896198&apikey=9b07aacd&t='+artistMov)
 .then(function(response){
     console.log("Movie Title: "+response.data.Title)
@@ -33,12 +35,11 @@ axios.get('http://www.omdbapi.com/?i=tt3896198&apikey=9b07aacd&t='+artistMov)
     console.log("Country(ies) filmed in: "+response.data.Country)
     console.log("Language: "+response.data.Language)
     console.log("Short Plot: "+response.data.Plot)
-    console.log("Main Actors: "+response.data.Actors)
-    
+    console.log("Main Actors: "+response.data.Actors)  
 })
 .catch(function(err){
     console.log(err);
 })
-
-
 }
+// do-what it says to read text file
+else if(process.argv[2]==='do-what-it-says'){}
