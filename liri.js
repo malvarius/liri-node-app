@@ -12,9 +12,11 @@ if (process.argv[2]==='concert-this'){
 axios.get("https://rest.bandsintown.com/artists/" + artistMov + "/events?app_id=codingbootcamp")
 .then(function(response){
 for(var i=0;i<5;i++){
-    console.log(response.data[i].venue.name);
-    console.log(response.data[i].venue.city+", "+response.data[i].venue.region);
-    console.log(response.data[i].datetime);
+    console.log('=======================')
+    console.log("Concert Venue: "+response.data[i].venue.name);
+    console.log("Concert location: "+response.data[i].venue.city+", "+response.data[i].venue.country);
+    console.log("Concert date: "+response.data[i].datetime);
+    console.log("=======================")
 }
 })
  .catch(function(err){
@@ -42,4 +44,11 @@ axios.get('http://www.omdbapi.com/?i=tt3896198&apikey=9b07aacd&t='+artistMov)
 })
 }
 // do-what it says to read text file
-else if(process.argv[2]==='do-what-it-says'){}
+else if(process.argv[2]==='do-what-it-says'){
+    var fs = require('fs');
+    fs.readFile('./random.txt','utf8',function(err,data){
+        if (err)console.log(err);
+        var Arr = data.split(",")
+       var song = Arr[1].replace(/"/g,"")
+    })
+}
