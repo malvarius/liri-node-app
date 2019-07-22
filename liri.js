@@ -1,7 +1,10 @@
+// setup keys spotify and axios stuffs
 require("dotenv").config();
 var keys = require("./keys.js");
+var SpotifyWebApi = require('spotify-web-api-node');
 var artistMov = process.argv.slice(3).join("+") 
 const axios = require('axios');
+
 
 
 
@@ -51,4 +54,29 @@ else if(process.argv[2]==='do-what-it-says'){
         var Arr = data.split(",")
        var song = Arr[1].replace(/"/g,"")
     })
+}
+// if statement for spotify-this USING NPM of spotify-web-api
+else if(process.argv[2]==='spotify-this'){
+    var clientId = keys.id,
+    clientSecret = keys.secret
+   
+  // Create the api object with the credentials
+  var spotifyApi = new SpotifyWebApi({
+    clientId: clientId,
+    clientSecret: clientSecret,
+    accessToken: 'BQD-c--LV_jQ1x5GoH_m9lT-dUMAczKhh_N-xlZiHFAHzDSPN2TofB7HW6Fvt-5AjSPuAZmm6pWbm0Izb6Y'
+  });
+  spotifyApi.searchTracks('track:Old Town Road').then(
+    function(data) {
+      console.log("Song Name: "+data.body.tracks.items[0].name);
+      var artistLength = data.body.tracks.items[0].artists.length
+      for(i=0;i<artistLength;i++){
+      console.log("Artist "+(i+1)+": " +data.body.tracks.items[0].artists[i].name)
+      }
+    //   console.log(data.body.tracks.items[0])
+    },
+    function(err) {
+      console.log('Something went wrong!', err);
+    }
+  )
 }
