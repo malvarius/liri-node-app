@@ -11,7 +11,7 @@ var token = [];
 //  CONCERT_THIS FUNCTION
 var concert = function (concert) {
     // console.log(artistMov);
-    axios.get("https://rest.bandsintown.com/artists/" + concert + "/events?app_id=codingbootcamp")
+    axios.get("https://rest.bandsintown.com/artists/" + concert + "/events?app_id="+keys.bandKey)
         .then(function (response) {
             for (var i = 0; i < 5; i++) {
                 console.log('=======================')
@@ -31,7 +31,7 @@ var movie = function (movies) {
     if (!process.argv[3]) {
         artistMov = 'Mr.+Nobody'
     }
-    axios.get('http://www.omdbapi.com/?i=tt3896198&apikey=9b07aacd&t=' + movies)
+    axios.get('http://www.omdbapi.com/?i=tt3896198&apikey='+keys.OMDBkey+'&t=' + movies)
         .then(function (response) {
             console.log("Movie Title: " + response.data.Title)
             console.log("Produced in: " + response.data.Year)
