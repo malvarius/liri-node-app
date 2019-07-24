@@ -13,3 +13,15 @@ Language: English
 Short Plot: A miserable conman and his partner pose as Santa and his Little Helper to rob department stores on Christmas Eve. But they run into  
 problems when the conman befriends a troubled kid.  
 Main Actors: Billy Bob Thornton, Tony Cox, Brett Kelly, Lauren Graham  
+
+**Your own api keys will be needed in a .env file to use this and will look as follows:**  
+SPOTIFY_ID=yourSpotifyIDhere  
+SPOTIFY_SECRET=yourSpotifysecrethere  
+OMDBkey=yourOMDBkeyhere  
+bandsKey=bandsintownkeyhere  
+
+**As well as you will need the following node packages:**  
+axios  
+spotify-web-api-node  
+dotenv  
+
