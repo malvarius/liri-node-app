@@ -3,7 +3,7 @@ The nature of this app is to output information of movies, concert information a
 It works by typing the following in the command line: node liri (and one of the following: spotify-this-song, movie-this, concert-this, do-what-it-says)
 
 
-**An example input would look like this** node liri movie-this bad santa (this will return the following:)
+**An example input would look like this:** node liri movie-this bad santa (this will return the following:)
 
 Movie Title: Bad Santa
 Produced in: 2003
