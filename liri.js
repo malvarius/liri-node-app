@@ -6,23 +6,7 @@ var artistMov = process.argv.slice(3).join(" ")
 const axios = require('axios');
 var token = [];
 
-// SPOTIFY CREDENTIALS
-// var spotifyApi = new SpotifyWebApi({
-//     clientId: keys.id,
-//     clientSecret: keys.secret
-//   });
 
-//   // Get an access token and 'save' it using a setter
-//   spotifyApi.clientCredentialsGrant().then(
-//     function(data) {
-//       console.log('The access token is ' + data.body['access_token']);
-//       spotifyApi.setAccessToken(data.body['access_token']);
-//       token.push( data.body['access_token']);
-//     },
-//     function(err) {
-//       console.log('Something went wrong!', err);
-//     }
-//   );
 
 //  CONCERT_THIS FUNCTION
 var concert = function (concert) {
@@ -69,7 +53,7 @@ var spotFunction = function (songs) {
     var spotifyApi = new SpotifyWebApi({
         clientId: keys.id,
         clientSecret: keys.secret,
-        accessToken: 'BQCoNZyo3L41j3m9Dy_VY1SsNE_DI83hylrsbWudB_AB2ZvNhbV1SVUiz7_iPnnb-RFHTAuhkosfiN_tr9E'
+        accessToken: token[0]
     });
     spotifyApi.searchTracks('track:' + songs)
         .then(
@@ -107,7 +91,23 @@ else if (process.argv[2] === 'do-what-it-says') {
         var input = Arr[1].replace(/"/g, "")
         var command = Arr[0];
         if (command === 'spotify-this-song') {
-            spotFunction(input)
+            // SPOTIFY CREDENTIALS
+            var spotifyApi = new SpotifyWebApi({
+                clientId: keys.id,
+                clientSecret: keys.secret
+            });
+            // Get an access token and 'save' it using a setter
+            spotifyApi.clientCredentialsGrant().then(
+                function (data) {
+                    //   console.log('The access token is ' + data.body['access_token']);
+                    spotifyApi.setAccessToken(data.body['access_token']);
+                    token.push(data.body['access_token']);
+                    spotFunction(input);
+                },
+                function (err) {
+                    console.log('Something went wrong!', err);
+                }
+            )
         } else if (command === 'movie-this') {
             movie(input);
         } else if (command === 'concert-this') {
@@ -117,5 +117,21 @@ else if (process.argv[2] === 'do-what-it-says') {
 }
 // if statement for spotify-this USING NPM of spotify-web-api
 else if (process.argv[2] === 'spotify-this-song') {
-    spotFunction(artistMov);
+    // SPOTIFY CREDENTIALS
+    var spotifyApi = new SpotifyWebApi({
+        clientId: keys.id,
+        clientSecret: keys.secret
+    });
+    // Get an access token and 'save' it using a setter
+    spotifyApi.clientCredentialsGrant().then(
+        function (data) {
+            //   console.log('The access token is ' + data.body['access_token']);
+            spotifyApi.setAccessToken(data.body['access_token']);
+            token.push(data.body['access_token']);
+            spotFunction(artistMov);
+        },
+        function (err) {
+            console.log('Something went wrong!', err);
+        }
+    )
 }
