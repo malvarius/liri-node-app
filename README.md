@@ -1,6 +1,10 @@
 # liri-node-app
 
-**INSTRUCTIONAL VIDEO ON HOW TO USE:** https://drive.google.com/file/d/1kha5YYq5dXems-0ofEJLnaGjvpeu9ray/view?usp=sharing
+**INSTRUCTIONAL VIDEO ON HOW TO USE:**   
+https://drive.google.com/file/d/1kha5YYq5dXems-0ofEJLnaGjvpeu9ray/view?usp=sharing  
+
+You can find this app on my portfolio as well:  
+https://malvarius.github.io/bootstrap-portfolio/portfolio.html  
 
 The nature of this app is to output information of movies, concert information about an artist, or spotify information about a specific song.  
 It works by typing the following in the command line: node liri (and one of the following: spotify-this-song, movie-this, concert-this, do-what-it-says)  
