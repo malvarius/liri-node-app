@@ -1,3 +1,6 @@
+// DO NOT USE THIS FILE
+// THIS FILE IS SOLELY FOR GENERATING SPOTIFY TOKENS FOR TESTING
+
 require("dotenv").config();
 var keys = require("./keys.js");
 var SpotifyWebApi = require('spotify-web-api-node');
