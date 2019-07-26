@@ -28,8 +28,8 @@ var concert = function (concert) {
 //  MOVIE_THIS FUNCTION
 
 var movie = function (movies) {
-    if (!process.argv[3]) {
-        artistMov = 'Mr.+Nobody'
+    if (!process.argv[3]&&!movies) {
+        movies = 'Mr.+Nobody'
     }
     axios.get('http://www.omdbapi.com/?i=tt3896198&apikey='+keys.OMDBkey+'&t=' + movies)
         .then(function (response) {
